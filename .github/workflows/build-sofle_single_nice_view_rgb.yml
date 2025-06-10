@@ -1,0 +1,16 @@
+name: 'Build Sofle left-only nice!view RGB Firmware'
+on:
+  workflow_dispatch:  # can be triggered manually
+  push:               # automatically run on changes to following paths
+    paths:
+      - 'build/sofle_single_nice_view_rgb.yaml'
+      - 'config/sofle_single_nice_view_rgb/*'
+      - 'config/west.yml'
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: build/sofle_single_nice_view_rgb.yaml
+      config_path: config/sofle_single_nice_view_rgb
+      archive_name: sofle_left_nice_view_rgb_studio
